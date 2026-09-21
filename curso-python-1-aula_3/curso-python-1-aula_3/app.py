@@ -30,7 +30,7 @@ def opcao_invalida():
     voltar_ao_menu_principal()
 
 def exibir_subtitulo(texto):
-    os.system('cls')
+    print('\033[H\033[J', end='')
     print(texto)
     print()
 
@@ -69,7 +69,7 @@ def escolher_opcao():
         opcao_invalida()
 
 def main():
-    os.system('cls')
+    print('\033[H\033[J', end='')
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcao()
