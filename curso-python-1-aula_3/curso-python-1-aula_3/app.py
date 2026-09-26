@@ -36,14 +36,18 @@ def opcao_invalida():
 
 def exibir_subtitulo(texto):
     print('\033[H\033[J', end='')
+    linha = '*' * len(texto)
+    print(linha)
     print(texto)
-    print()
+    print(f'{linha} \n\n\n')
 
 def cadastrar_novo_restaurante():
     exibir_subtitulo('Cadastro de novos restaurantes')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     categoria = input(f'Digite o nome da categoria do restaurante {nome_do_restaurante}: ')     
+    
     dados_do_restaurante = {'nome': nome_do_restaurante, 'categoria': categoria, 'ativo': False}
+
     restaurantes.append(dados_do_restaurante) 
     print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso!')
     
@@ -64,17 +68,19 @@ def alternar_estado_restaurante():
                 mensagem = f'O restaurante {restaurante["nome"]} foi desativado com sucesso!'
             print(mensagem)
     if not restaurante_encontrado:
-        print(f'O restaurante {nome_do_restaurante} não foi encontrado!')
-    
-    
-    
+        print(f'O restaurante {nome_do_restaurante} não foi encontrado!')    
+    voltar_ao_menu_principal()
 
 def listar_restaurantes():
     exibir_subtitulo('Listando restaurantes')
 
-    for restaurante in restaurantes:
+    print(f'{'Nome do restaurante'.ljust(24) } | {'Categoria'.ljust(24)} | {'Status'.ljust(24)}')    
+    print ('-'*24 + ' | ' + '-'*24 + ' | ' + '-'*24)
 
-        print(f'{restaurante['nome']}')
+    for restaurante in restaurantes:
+        ativo =  'Ativado' if restaurante['ativo'] else 'Desativado'
+        # print(f'{restaurante['nome']} \t\t | {restaurante['categoria']} \t\t | {ativo}')
+        print(f'{restaurante['nome'].ljust(24)} | {restaurante['categoria'].ljust(24)} | {ativo}')
 
     voltar_ao_menu_principal()
 
@@ -88,7 +94,7 @@ def escolher_opcao():
         elif opcao_escolhida == 2: 
             listar_restaurantes()
         elif opcao_escolhida == 3: 
-            print('Ativar restaurante')
+            alternar_estado_restaurante()
         elif opcao_escolhida == 4: 
             finalizar_app()
         else: 
