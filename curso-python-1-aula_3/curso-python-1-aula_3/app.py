@@ -42,6 +42,16 @@ def exibir_subtitulo(texto):
     print(f'{linha} \n\n\n')
 
 def cadastrar_novo_restaurante():
+    '''
+        Função responsável por cadastrar um novo restaurante.
+        Input: 
+           - nome do restaurante
+           - categoria.
+
+        Output:
+            - mensagem de sucesso
+
+    '''
     exibir_subtitulo('Cadastro de novos restaurantes')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     categoria = input(f'Digite o nome da categoria do restaurante {nome_do_restaurante}: ')     
