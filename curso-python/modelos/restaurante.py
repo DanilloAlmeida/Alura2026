@@ -4,8 +4,8 @@ class Restaurante:
 
     def __init__(self, nome, categoria, 
                  capacidade=0, nota_avaliacao=0.0,):
-        self.nome = nome
-        self.categoria = categoria
+        self.nome = nome.title()
+        self.categoria = categoria.upper()
         self._ativo = False
         self.nota_avaliacao = nota_avaliacao
         self.capacidade = capacidade       
@@ -26,10 +26,10 @@ class Restaurante:
     def ativo(self):
         return 'sim' if self._ativo else 'não'
 
-restaurante_praca = Restaurante('Praça', 'Gourmet')
-restaurante_pizza = Restaurante('Pizza', 'Italiana')
+restaurante_praca = Restaurante('praça', 'Gourmet')
+restaurante_pizza = Restaurante('pizza', 'Italiana')
 restaurante_exemplo = Restaurante(
-    nome='Comida Boa',
+    nome='COMIDA BOA',
     categoria='Gourmet',
     # capacidade=50,
     # nota_avaliacao=4.5,
