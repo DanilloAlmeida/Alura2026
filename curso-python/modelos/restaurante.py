@@ -30,20 +30,20 @@ class Restaurante:
     def ativo(self):
         return 'sim' if self._ativo else 'não'
 
-restaurante_praca = Restaurante('praça', 'Gourmet')
-restaurante_pizza = Restaurante('pizza', 'Italiana')
-# restaurante_pizza.nome = 'Pizza Bella'
-restaurante_pizza._nome = 'Pizza Bella'
-restaurante_burger = Restaurante('burger', 'Fast Food')
-restaurante_burger._nome = 'Burger King' 
-restaurante_burger._ativo = True
+# restaurante_praca = Restaurante('praça', 'Gourmet')
+# restaurante_pizza = Restaurante('pizza', 'Italiana')
+# # restaurante_pizza.nome = 'Pizza Bella'
+# restaurante_pizza._nome = 'Pizza Bella'
+# restaurante_burger = Restaurante('burger', 'Fast Food')
+# restaurante_burger._nome = 'Burger King' 
+# restaurante_burger._ativo = True
 
-restaurante_exemplo = Restaurante(
-    nome='COMIDA BOA',
-    categoria='Gourmet',
-    # capacidade=50,
-    # nota_avaliacao=4.5,
-    # ativo=True
-)
+# restaurante_exemplo = Restaurante(
+#     nome='COMIDA BOA',
+#     categoria='Gourmet',
+#     # capacidade=50,
+#     # nota_avaliacao=4.5,
+#     # ativo=True
+# )
 
-Restaurante.listar_restaurantes()
+# Restaurante.listar_restaurantes()

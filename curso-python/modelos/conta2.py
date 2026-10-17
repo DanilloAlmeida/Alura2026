@@ -43,9 +43,40 @@ print(conta1)
 print(conta2)
 print(conta3)
 print('\n desativando contas\n')
-conta1._ativo = False
-conta2.ativo = False
-conta3._ativo = False
+# conta1._ativo = False
+# conta2.ativo = False
+# conta3._ativo = False
 print(conta1)
 print(conta2)
-print(conta3)
+print(f'{conta3}\n\n')
+
+class ClienteBanco:
+    def __init__(self, nome, idade, endereco, cpf, profissao):
+        self.nome = nome
+        self.idade = idade
+        self.endereco = endereco
+        self.cpf = cpf
+        self.profissao = profissao
+        self.conta = None
+
+    def __str__(self):
+        return f'Cliente: {self.nome}, Idade: {self.idade}, CPF: {self.cpf}, Profissão: {self.profissao}, Endereço: {self.endereco}'
+
+    @classmethod
+    def criar_conta(cls, titular, saldo_inicial):
+        titular.conta = ContaBancariaPythonica(titular.nome, saldo_inicial)
+        return titular.conta
+
+cliente1 = ClienteBanco('João', 30, 'Rua A', '123.456.789-00', 'Engenheiro')
+cliente2 = ClienteBanco('Maria', 25, 'Rua B', '987.654.321-00', 'Médica')
+cliente3 = ClienteBanco('José', 40, 'Rua C', '456.789.123-00', 'Professor')
+
+print(cliente1)
+print(cliente2)
+print(cliente3)
+
+conta_cliente1 = ClienteBanco.criar_conta(cliente1, 1000)
+print('\n\n dados da conta do cliente 1:')
+print(f'{conta_cliente1}')
+print('\n\ndados do cliente 1:')
+print(cliente1)
