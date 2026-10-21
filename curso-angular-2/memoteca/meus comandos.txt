@@ -1,1 +1,5 @@
+npm.cmd install -g @angular/cli
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+npm install
+npm.cmd start -- --open
 ng serve --open
