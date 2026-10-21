@@ -3,3 +3,11 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 npm install
 npm.cmd start -- --open
 ng serve --open
+
+reduzindo prompt:
+  function prompt { "PS> " }
+  para adicionar a pasta atual:
+    function prompt { "PS $([System.IO.Path]::GetFileName($PWD.Path.TrimEnd('\')))> " }
+
+criando componentes:
+  ng g c componentes/pensamentos/listar-pensamento
