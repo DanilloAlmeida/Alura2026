@@ -1,14 +1,16 @@
+from modelos.avaliacao import Avaliacao
+
+
 class Restaurante:
 
     restaurantes = []
 
-    def __init__(self, nome, categoria, 
-                 capacidade=0, nota_avaliacao=0.0,):
+    def __init__(self, nome, categoria):
         self._nome = nome.title()
         self._categoria = categoria.upper()
         self._ativo = False
-        self.nota_avaliacao = nota_avaliacao
-        self.capacidade = capacidade       
+        self._avaliacao = []
+        # self._capacidade = capacidade       
 
         Restaurante.restaurantes.append(self)
 
@@ -18,32 +20,36 @@ class Restaurante:
 
     @classmethod    
     def listar_restaurantes(cls):
+        print(
+            f"{'NOME DO RESTAURANTE'.ljust(25)} | "
+            f"{'CATEGORIA'.ljust(15)} | "
+            f"{'ATIVO'.ljust(5)} | "
+            f"{'AVALIAÇÃO'.ljust(9)} |"
+        )
         for restaurante in cls.restaurantes:
-            print(f'{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} \t | Ativo: {restaurante.ativo.ljust(3)}')
+            print(
+                f"{restaurante._nome.ljust(25)} | "
+                f"{restaurante._categoria.ljust(15)} | "
+                f"{restaurante.ativo.ljust(5)} | "
+                f"{str(restaurante.media_avaliacoes).ljust(9)} |"
+            )
             # print(f'{restaurante.capacidade} {''.ljust(24)} | {restaurante.nota_avaliacao}')
-            
-    @property
-    def nome(self):
-        self._ativo = not self._ativo
 
     @property    
     def ativo(self):
         return 'sim' if self._ativo else 'não'
 
-# restaurante_praca = Restaurante('praça', 'Gourmet')
-# restaurante_pizza = Restaurante('pizza', 'Italiana')
-# # restaurante_pizza.nome = 'Pizza Bella'
-# restaurante_pizza._nome = 'Pizza Bella'
-# restaurante_burger = Restaurante('burger', 'Fast Food')
-# restaurante_burger._nome = 'Burger King' 
-# restaurante_burger._ativo = True
+    def alternar_estado(self):
+        self._ativo = not self._ativo
 
-# restaurante_exemplo = Restaurante(
-#     nome='COMIDA BOA',
-#     categoria='Gourmet',
-#     # capacidade=50,
-#     # nota_avaliacao=4.5,
-#     # ativo=True
-# )
+    def receber_avaliacao(self, cliente, nota):
+        avaliacao = Avaliacao(cliente, nota)
+        self._avaliacao.append(avaliacao)
 
-# Restaurante.listar_restaurantes()
+    @property
+    def media_avaliacoes(self):
+        if not self._avaliacao:
+            return 0
+        soma_das_notas = sum(avaliacao._nota for avaliacao in self._avaliacao)
+        return round(soma_das_notas / len(self._avaliacao), 1)
+
