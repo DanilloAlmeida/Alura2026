@@ -24,22 +24,32 @@ class Livro:
     def verificar_disponibilidade(ano_publicacao):
         livros_disponiveis = []
         for livro in Livro.livros:
-            if livro.ano_publicacao == ano_publicacao:
+            if livro.ano_publicacao == ano_publicacao and livro.disponivel == True:
                 livros_disponiveis.append(livro)
         if livros_disponiveis == []:
             print(f'Não há livros disponíveis do ano {ano_publicacao}.')        
         return livros_disponiveis
 
+
+
+
 livro1 = Livro('O Senhor dos Anéis', 'J.R.R. Tolkin', 1954)
 livro2 = Livro('O Hobbit', 'J.R.R. Tolkin', 1954)
 livro3 = Livro('O Hobbit3', 'J.R.R. Tolkin', 1954)
 livro4 = Livro('O Hobbit4', 'J.R.R. Tolkin', 1954)
-print(livro1)
-print(livro2)
-print(livro3)
-print(livro4)
-print('### executando emprestimo livro1 ###')
+# print(livro1)
+# print(livro2)
+# print(livro3)
+# print(livro4)
+print('\n\n ###    executando emprestimo livro1    ###')
 livro1.emprestar()
 print(livro1)
-print('### executando verificação de disponibilidade ###')
-print (Livro.verificar_disponibilidade(1954))
+print('\n\n ###    executando verificação de disponibilidade    ###')
+
+livros = Livro.verificar_disponibilidade(1954)
+
+if livros:
+    for livro in livros:
+        print(livro)
+else:
+    print('Não há livros disponíveis desse ano.')
